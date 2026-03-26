@@ -28,7 +28,6 @@ const Index = () => {
         <About />
         <Skills />
         <Projects />
-        <Contact />
       </main>
 
       {/* Footer */}

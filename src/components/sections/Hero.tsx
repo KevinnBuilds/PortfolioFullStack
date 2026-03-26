@@ -20,7 +20,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24 pb-16"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-15 pb-16"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/10 to-transparent" />
       <div className="absolute top-1/4 left-1/4 h-[700px] w-[700px] rounded-full bg-primary/5 blur-3xl animate-float" />
