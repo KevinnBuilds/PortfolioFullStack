@@ -1,148 +1,205 @@
 # Portfolio - Full-Stack Developer
 
-A modern, responsive portfolio website showcasing my work as a Full-Stack Developer. Built with cutting-edge web technologies and featuring a sleek glassmorphism design with smooth animations.
+Sito portfolio moderno e responsive pensato per presentare il mio lavoro come Full-Stack Developer. Il progetto e sviluppato come Single Page Application con React, TypeScript, Vite e un'interfaccia glassmorphism animata.
 
-## Features
+## Panoramica
 
-- **Modern UI/UX**: Glassmorphism design with gradient effects and smooth animations
-- **Responsive Design**: Fully responsive across all devices
-- **Interactive Sections**:
-  - **Hero**: Introduction with quick tech stack badges
-  - **About**: Personal story and core competencies
-  - **Skills**: Comprehensive tech stack organized by categories
-  - **Projects**: Featured client projects and internal tools with detailed modals
-  - **Contact**: Contact form and social links
-- **Smooth Animations**: Powered by Framer Motion for engaging user experience
-- **Performance Optimized**: Built with Vite for fast development and production builds
-- **Analytics**: Integrated Vercel Analytics for insights
+Il sito include sezioni dedicate a:
 
-## Tech Stack
+- presentazione personale
+- competenze tecniche
+- progetti selezionati
+- contatti e link social
 
-### Core Framework
+L'applicazione supporta anche il cambio lingua `italiano/inglese` tramite contesto React e persistenza in `localStorage`.
 
-- **React 18.3** - UI library
-- **TypeScript** - Type-safe development
-- **Vite** - Build tool and dev server
-- **React Router DOM** - Client-side routing
+## Funzionalita principali
 
-### UI & Styling
+- Interfaccia moderna con stile glassmorphism, gradienti e animazioni fluide
+- Layout responsive ottimizzato per mobile, tablet e desktop
+- Navigazione single-page con scroll fluido tra le sezioni
+- Sezioni `Hero`, `About`, `Skills`, `Projects` e `Contact`
+- Progetti mostrati con contenuti dettagliati e struttura dati separata
+- Supporto multilingua `IT/EN`
+- Analytics integrate con `@vercel/analytics`
+- Build veloce e sviluppo rapido grazie a `Vite`
 
-- **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - High-quality component library built on Radix UI
-- **Framer Motion** - Animation library for React
-- **Lucide React** - Beautiful icon library
-- **CSS Custom Properties** - Theming system
+## Nota importante sul form contatti
 
-### UI Components (Radix UI)
+Il form presente nella sezione contatti e attualmente **solo dimostrativo**: al submit non invia dati a un backend o a un servizio esterno, ma esegue un `console.log` locale e mostra uno stato di successo simulato.
 
-- Accordion, Alert Dialog, Avatar, Checkbox, Dialog
-- Dropdown Menu, Hover Card, Popover, Progress
-- Select, Separator, Slider, Switch, Tabs
-- Toast, Tooltip, and more
+Se vuoi usare il portfolio in produzione con un form reale, va integrato con un provider esterno o con una API dedicata.
 
-### State Management & Data
+## Stack tecnologico
 
-- **TanStack Query (React Query)** - Server state management
-- **React Hook Form** - Form handling
-- **Zod** - Schema validation
+### Core
 
-### Additional Libraries
+- `React 18`
+- `TypeScript`
+- `Vite`
+- `React Router DOM`
 
-- **Sonner** - Toast notifications
-- **date-fns** - Date utilities
-- **class-variance-authority** - Component variants
-- **tailwind-merge** - Merge Tailwind classes
-- **next-themes** - Theme management
+### UI e styling
 
-### Development Tools
+- `Tailwind CSS`
+- `shadcn/ui`
+- `Radix UI`
+- `Framer Motion`
+- `Lucide React`
+- `CSS Custom Properties`
 
-- **ESLint** - Code linting
-- **TypeScript ESLint** - TypeScript-specific linting
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixes
+### Stato, form e validazione
 
-### Analytics & Deployment
+- `@tanstack/react-query`
+- `react-hook-form`
+- `zod`
 
-- **Vercel Analytics** - Web analytics
+### Librerie aggiuntive
 
-dev-showcase/
+- `sonner`
+- `date-fns`
+- `class-variance-authority`
+- `tailwind-merge`
+- `next-themes`
+
+### Tooling
+
+- `ESLint`
+- `typescript-eslint`
+- `PostCSS`
+- `Autoprefixer`
+
+## Struttura del progetto
+
+```text
+Portfolio/
+├── public/
+│   ├── code.png
+│   ├── cv.pdf
+│   ├── placeholder.svg
+│   └── robots.txt
 ├── src/
-│ ├── components/
-│ │ ├── base/ # Base components
-│ │ ├── foundations/ # Foundation components
-│ │ ├── layout/ # Layout components (Navbar, Footer)
-│ │ ├── sections/ # Page sections (Hero, About, Skills, Projects, Contact)
-│ │ └── ui/ # shadcn/ui components
-│ ├── data/ # Data files (profile, projects, skills)
-│ ├── hooks/ # Custom React hooks
-│ ├── lib/ # Utility functions
-│ ├── pages/ # Page components
-│ ├── App.tsx # Main app component
-│ ├── main.tsx # Entry point
-│ └── index.css # Global styles
-├── public/ # Static assets
-├── package.json # Dependencies
-├── vite.config.ts # Vite configuration
-├── tailwind.config.ts # Tailwind configuration
-└── tsconfig.json # TypeScript configuration
+│   ├── components/
+│   │   ├── base/
+│   │   ├── foundations/
+│   │   ├── layout/
+│   │   ├── sections/
+│   │   └── ui/
+│   ├── context/
+│   ├── data/
+│   ├── hooks/
+│   ├── lib/
+│   ├── pages/
+│   ├── App.tsx
+│   ├── App.css
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── ARCHITECTURE.md
+├── eslint.config.js
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+└── vite.config.ts
+```
 
-## 🎨 Design System### Color Palette- **Primary**: Cyan/Teal gradient (`hsl(175 80% 50%)`)- **Accent**: Purple gradient (`hsl(265 90% 60%)`)- **Background**: Dark theme with glassmorphism effects- **Custom gradients**: Primary, text, card, and glow gradients### Key Features- Glassmorphism effects with backdrop blur- Smooth animations and transitions- Responsive grid layouts- Interactive hover states- Gradient text effects- Custom scroll indicators## 🚀 Getting Started### Prerequisites- **Node.js** (v18 or higher recommended)- **npm** or **yarn** or **bun**### Installation1. **Clone the repository** git clone <YOUR_GIT_URL> cd dev-showcase
+## Architettura dei contenuti
 
-Install dependencies
-npm install # or yarn install # or bun install
-Start the development server
-npm run dev # or yarn dev # or bun dev
-Open your browser
-Navigate to http://localhost:8080 (or the port shown in terminal)
-Build for Production
+I dati principali del portfolio sono separati dal rendering:
+
+- `src/data/profile.ts`: informazioni personali e link
+- `src/data/projects.ts`: elenco dei progetti
+- `src/data/skills.ts`: categorie e competenze
+- `src/data/translations.ts`: testi localizzati in italiano e inglese
+- `src/context/LanguageContext.tsx`: gestione della lingua corrente
+
+Per una panoramica piu tecnica dell'architettura del progetto, consulta `ARCHITECTURE.md`.
+
+## Avvio del progetto
+
+### Prerequisiti
+
+- `Node.js` 18 o superiore
+- `npm`, `yarn` o `bun`
+
+### Installazione
+
+```bash
+npm install
+```
+
+### Avvio in sviluppo
+
+```bash
+npm run dev
+```
+
+Il server di sviluppo parte di default su `http://localhost:8080`.
+
+### Build di produzione
+
+```bash
 npm run build
-The production build will be in the dist/ directory.
-Preview Production Build
+```
+
+L'output viene generato nella cartella `dist/`.
+
+### Anteprima della build
+
+```bash
 npm run preview
-📝 Customization
-Update Profile Information
-Edit src/data/profile.ts:
-Name, title, tagline
-Description and hero description
-Contact information (email, LinkedIn, GitHub)
-CV URL
-Availability status
-Add/Edit Projects
-Edit src/data/projects.ts:
-Add new projects to the projects array
-Include project details, features, tech stack
-Set category as "featured" or "internal"
-Add live URL if available
-Update Skills
-Edit src/data/skills.ts:
-Modify skill categories
-Add or remove skills
-Update quick stack badges in Hero section
-Styling
-Global styles: src/index.css
-Tailwind config: tailwind.config.ts
-Component styles: Inline Tailwind classes in components
-🎯 Available Scripts
-npm run dev - Start development server
-npm run build - Build for production
-npm run build:dev - Build in development mode
-npm run preview - Preview production build
-npm run lint - Run ESLint
-🌐 Deployment
-Vercel (Recommended)
-Push your code to GitHub
-Import project in Vercel
-Deploy automatically on push
-Other Platforms
-The project can be deployed to any platform that supports static sites:
-Netlify
-GitHub Pages
-Render
-Cloudflare Pages
-📄 License
-This project is private and personal.
-👤 Author
+```
+
+## Script disponibili
+
+- `npm run dev`: avvia il server di sviluppo
+- `npm run build`: crea la build di produzione
+- `npm run build:dev`: crea una build in modalita development
+- `npm run preview`: esegue l'anteprima locale della build
+- `npm run lint`: esegue il linting del progetto
+
+## Personalizzazione
+
+### Aggiornare i contenuti
+
+- Modifica `src/data/profile.ts` per nome, titolo, descrizione, contatti e CV
+- Modifica `src/data/projects.ts` per aggiungere o aggiornare i progetti
+- Modifica `src/data/skills.ts` per aggiornare stack e categorie
+- Modifica `src/data/translations.ts` per mantenere allineate le versioni italiana e inglese
+
+### Aggiornare stile e design system
+
+- `src/index.css`: variabili CSS globali, gradienti e classi custom
+- `tailwind.config.ts`: tema Tailwind, font, animazioni e shadow
+- componenti in `src/components/`: struttura UI e sezioni del sito
+
+## Deployment
+
+Il progetto e adatto al deploy su piattaforme per siti statici, ad esempio:
+
+- Vercel
+- Netlify
+- Cloudflare Pages
+- Render
+- GitHub Pages
+
+## Cosa mancava o non era corretto nel README precedente
+
+- Diverse sezioni erano formattate male e risultavano difficili da leggere
+- La struttura del progetto riportava `dev-showcase/`, ma il repository attuale e `Portfolio`
+- Non veniva menzionato il supporto multilingua presente nel codice
+- Il form contatti era descritto in modo troppo implicito, senza chiarire che oggi non invia dati reali
+- Mancava un riferimento esplicito a `ARCHITECTURE.md`
+- Alcuni elenchi di componenti e librerie erano poco utili per chi legge il README e non riflettevano bene le priorita del progetto
+
+## Licenza
+
+Progetto personale e privato.
+
+## Autore
+
 Kevin
-Email: kevins.dvp@gmail.com
-LinkedIn: Kevin Marku
-GitHub: @KevinMakeMoney
+
+- Email: `kevins.dvp@gmail.com`
+- LinkedIn: `https://www.linkedin.com/in/kevin-marku-832831304/`
+- GitHub: `https://github.com/KevinMakeMoney`
