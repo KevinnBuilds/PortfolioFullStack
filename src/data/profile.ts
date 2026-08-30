@@ -1,11 +1,11 @@
 export const profile = {
   name: "Kevin",
-  title: "Full-Stack Developer",
-  tagline: "Building Modern Web Experiences",
+  title: "Full-Stack Engineer",
+  tagline: "Automation Systems Builder",
   description:
-    "I craft performant web applications, elegant UIs, and robust backend systems. Specializing in React, Django, and PostgreSQL with a focus on clean architecture and exceptional user experience.",
+    "I design business applications, software systems, integrations, and workflow automations that turn manual processes into reliable digital tools.",
   heroDescription:
-    "From concept to deployment — I build scalable web apps, intuitive dashboards, automation workflows, and RESTful APIs that deliver real business value.",
+    "From process analysis to deployment: frontend, backend, databases, APIs, integrations, and automation.",
   email: "kevins.dvp@gmail.com",
   linkedin: "https://www.linkedin.com/in/kevin-marku-832831304/",
   github: "https://github.com/KevinMakeMoney",

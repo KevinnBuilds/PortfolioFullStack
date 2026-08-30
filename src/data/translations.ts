@@ -5,6 +5,8 @@ import {
   Layers,
   FolderOpenDot,
   Contact,
+  Workflow,
+  BriefcaseBusiness,
 } from "lucide-react";
 
 type NavLink = {
@@ -22,7 +24,17 @@ type ProjectTranslation = {
   type: string;
   hint?: string;
   goal: string;
+  problem: string;
+  solution: string;
+  automation: string;
   features: string[];
+  caseStudy: {
+    context: string;
+    analysis: string;
+    solution: string;
+    automation: string;
+    result: string;
+  };
 };
 
 type Translations = {
@@ -106,14 +118,16 @@ type Translations = {
 export const translations: Record<Language, Translations> = {
   it: {
     meta: {
-      title: "Portfolio Full-Stack Developer | Kevin",
+      title: "Portfolio Full-Stack Engineer | Kevin",
     },
     navbar: {
       links: [
         { href: "#home", label: "Home", icon: House },
         { href: "#about", label: "Chi sono", icon: UserSearch },
-        { href: "#stack", label: "Competenze", icon: Layers },
+        { href: "#capabilities", label: "Capabilities", icon: Workflow },
+        { href: "#stack", label: "Tech", icon: Layers },
         { href: "#projects", label: "Progetti", icon: FolderOpenDot },
+        { href: "#experience", label: "Experience", icon: BriefcaseBusiness },
         { href: "#contact", label: "Contatti", icon: Contact },
       ],
       cta: "Contattami",
@@ -122,12 +136,12 @@ export const translations: Record<Language, Translations> = {
     hero: {
       availability: "Disponibile per nuove opportunità",
       intro: "Ciao, sono",
-      title: "Full-Stack Developer",
-      tagline: "Creo esperienze web moderne",
+      title: "Full-Stack Engineer",
+      tagline: "Automation Systems Builder",
       description:
-        "Dall'idea al deploy realizzo web app scalabili, dashboard intuitive, workflow di automazione e API REST che portano valore concreto al business.",
-      primaryCta: "Vedi progetti",
-      secondaryCta: "Scarica CV",
+        "Progetto software, workflow e automazioni che trasformano processi aziendali complessi in sistemi efficienti e scalabili. Dall'analisi del processo al deployment: frontend, backend, database, API, integrazioni e automazione.",
+      primaryCta: "Scopri i progetti",
+      secondaryCta: "Scarica il CV",
       stackLabel: "Stack principale:",
       scrollLabel: "Scorri",
     },
@@ -136,32 +150,32 @@ export const translations: Record<Language, Translations> = {
       title: "Chi",
       highlightedTitle: "Sono",
       description:
-        "Sviluppatore appassionato, costruisco soluzioni web complete con attenzione a dettaglio, performance e solidita tecnica.",
+        "Full-Stack Engineer focalizzato su applicazioni business, sistemi gestionali, integrazioni e automazioni.",
       paragraphs: [
-        "Sono un Full-Stack Developer appassionato di soluzioni web complete, dai frontend curati fino ai backend solidi e database ben strutturati.",
-        "Il mio approccio unisce architettura pulita, codice manutenibile e una forte attenzione a performance ed esperienza utente. Ogni progetto e un'occasione per generare valore reale con scelte tecniche ragionate.",
-        "Che si tratti di una web app per clienti, una dashboard interna o un flusso di automazione, porto sempre lo stesso livello di qualita e cura dei dettagli.",
+        "Sono un Full-Stack Engineer focalizzato sulla progettazione di applicazioni business, sistemi gestionali e automazioni.",
+        "Il mio lavoro parte spesso dall'analisi di un processo esistente: studio workflow, dati, dipendenze e attivita manuali, individuo i punti critici e trasformo il processo in una soluzione software strutturata.",
+        "Seguo lo sviluppo end-to-end: frontend, backend, database, API, integrazioni, automazioni e deployment. L'obiettivo non e solo sviluppare funzionalita, ma costruire sistemi affidabili, manutenibili e realmente utili al business.",
       ],
       highlights: [
         {
-          title: "UI Moderne",
+          title: "Process Analysis",
           description:
-            "Creo interfacce responsive e accessibili con React e strumenti di styling moderni.",
+            "Analizzo workflow, dati e attivita manuali per individuare inefficienze e opportunita di automazione.",
         },
         {
-          title: "Backend Solidi",
+          title: "Full-Stack Systems",
           description:
-            "Sviluppo API scalabili e logica applicativa con Django e Node.js.",
+            "Progetto applicazioni complete con frontend, backend, API e database.",
         },
         {
-          title: "Dati Strutturati",
+          title: "Automation",
           description:
-            "Progetto schemi dati efficienti con PostgreSQL e MongoDB.",
+            "Automatizzo workflow e integrazioni tramite Python, JavaScript e servizi esterni.",
         },
         {
-          title: "Performance First",
+          title: "System Integration",
           description:
-            "Ottimizzo velocita, manutenibilita ed esperienza utente.",
+            "Connetto applicazioni, database, API e servizi aziendali creando flussi affidabili.",
         },
       ],
     },
@@ -170,16 +184,14 @@ export const translations: Record<Language, Translations> = {
       title: "Competenze e",
       highlightedTitle: "Tecnologie",
       description:
-        "Un toolkit completo per costruire applicazioni web moderne full-stack.",
+        "Uso lo stack come strumento per progettare sistemi che risolvono processi reali.",
       categories: {
-        "Core Expertise": "Competenze Chiave",
-        Languages: "Linguaggi",
         Frontend: "Frontend",
         Backend: "Backend",
-        Database: "Database",
-        "UI Libraries & Styling": "UI Library e Styling",
-        Deployment: "Deploy",
-        Knowledge: "Metodo",
+        Data: "Data",
+        "Automation & Integration": "Automation & Integration",
+        "DevOps / Deployment": "DevOps / Deployment",
+        "Enterprise / IT": "Enterprise / IT",
       },
       skills: {
         "Full-Stack Development": "Sviluppo Full-Stack",
@@ -197,11 +209,11 @@ export const translations: Record<Language, Translations> = {
       title: "Progetti",
       highlightedTitle: "Selezionati",
       description:
-        "Applicazioni reali che mostrano la mia esperienza nello sviluppo full-stack.",
+        "Applicazioni reali presentate dal punto di vista del processo, della soluzione e delle integrazioni.",
       clientProjectsTitle: "Progetti Clienti",
-      clientProjectsDescription: "Applicazioni pronte per la produzione",
+      clientProjectsDescription: "Software e siti orientati a processi reali",
       internalProjectsTitle: "Strumenti Aziendali Interni",
-      internalProjectsDescription: "Applicazioni pronte per la produzione",
+      internalProjectsDescription: "Sistemi per digitalizzare workflow aziendali",
       soon: "Presto",
       moreFeatures: "altre funzionalita",
       liveSite: "Sito live",
@@ -212,49 +224,127 @@ export const translations: Record<Language, Translations> = {
       close: "Chiudi",
       items: {
         indelebiletatto: {
-          type: "Web app per uno studio tatuaggi",
-          hint: "Design pensato per mobile",
-          goal: "Mostrare i lavori e gestire le prenotazioni",
+          type: "Booking & Automation Platform",
+          hint: "Prenotazioni e integrazioni",
+          goal:
+            "Web application completa per servizi, portfolio e gestione delle prenotazioni dello studio.",
+          problem:
+            "Uno studio aveva bisogno di presentare servizi e lavori, raccogliendo prenotazioni senza gestioni manuali frammentate.",
+          solution:
+            "Applicazione responsive con backend Node.js, persistenza MongoDB e gestione delle disponibilita.",
+          automation:
+            "Sincronizzazione con Google Calendar API, automazioni Python e conferme WhatsApp personalizzate.",
           features: [
-            "Galleria visuale dei tatuaggi realizzati",
-            "Sistema di prenotazione con slot disponibili",
-            "Slot sincronizzati con Google Calendar",
-            "Salvataggio prenotazioni su database per reportistica",
-            "Script Python per invio messaggi WhatsApp",
+            "Gestione prenotazioni tramite backend Node.js",
+            "Disponibilita aggiornate e persistenza dati MongoDB",
+            "Integrazione Google Calendar API",
+            "Sincronizzazione automatica delle prenotazioni",
+            "Automazioni Python e conferme WhatsApp personalizzate",
+            "Frontend responsive per servizi e portfolio",
           ],
+          caseStudy: {
+            context:
+              "Il progetto non e un semplice sito vetrina: combina presenza online, portfolio e booking.",
+            analysis:
+              "Il flusso di prenotazione e stato modellato intorno a disponibilita, dati cliente e calendario operativo.",
+            solution:
+              "Frontend React con Chakra UI, backend Node.js, database MongoDB e deployment su Vercel/Render.",
+            automation:
+              "Le prenotazioni vengono sincronizzate con Google Calendar e supportate da script Python per messaggi WhatsApp.",
+            result:
+              "Lo studio dispone di un canale digitale unico per presentarsi e gestire richieste in modo piu strutturato.",
+          },
         },
         edilprojectmilano: {
-          type: "Sito per impresa edile",
-          goal: "Aumentare la visibilita online e presentare lavori e servizi",
+          type: "Corporate Website & Local SEO",
+          goal:
+            "Sito responsive orientato a presentazione servizi, credibilita e conversione.",
+          problem:
+            "Azienda senza una presenza web professionale e con necessita di maggiore visibilita locale.",
+          solution:
+            "Sito React/TypeScript con struttura chiara per servizi, lavori, contatti e SEO on-page.",
+          automation:
+            "Form di contatto e setup della presenza locale tramite Google Business Profile.",
           features: [
-            "Portfolio dei lavori completati",
-            "Sezione storia aziendale e servizi",
-            "Form contatti con notifica email",
-            "Setup della presenza Google Business Profile",
+            "Sviluppo React / TypeScript",
+            "Responsive UI orientata alla conversione",
+            "SEO on-page e struttura per visibilita locale",
+            "Portfolio lavori e presentazione servizi",
+            "Deployment su infrastruttura web",
           ],
+          caseStudy: {
+            context:
+              "Il cliente aveva bisogno di una presenza digitale piu professionale e credibile.",
+            analysis:
+              "La struttura informativa e stata organizzata intorno a servizi, lavori completati e canali di contatto.",
+            solution:
+              "Sito responsive sviluppato con React, TypeScript e Tailwind CSS.",
+            automation:
+              "Il flusso di contatto e la presenza locale sono stati impostati per facilitare richieste e reperibilita.",
+            result:
+              "Il progetto offre una base web piu solida per presentazione aziendale e visibilita locale.",
+          },
         },
         "safety-scheduler": {
-          type: "Dashboard interna",
-          goal: "Gestire obblighi formativi e scadenze attestati in base al ruolo",
+          type: "Internal Business Application",
+          goal:
+            "Applicazione centralizzata che gestisce organico, corsi e scadenze calcolando automaticamente le date rilevanti.",
+          problem:
+            "La gestione delle scadenze formative veniva effettuata tramite file Excel statici e aggiornamenti manuali.",
+          solution:
+            "Sistema centralizzato con dashboard, filtri, backend Django, PostgreSQL e gestione strutturata dei dati.",
+          automation:
+            "Calcolo automatico delle scadenze e aggiornamento dell'organico tramite integrazione API con sistema HR/personale.",
           features: [
-            "Anagrafica aziende e persone salvata su database",
-            "Requisiti formativi basati sul ruolo",
-            "Tracciamento attestati completati e mancanti",
-            "Gestione scadenze per certificazione",
-            "Dashboard con stato di conformita",
-            "Filtri globali ed export Excel",
-            "Autenticazione in ingresso",
+            "Calcolo automatico delle scadenze formative",
+            "Dashboard aziendale con filtri avanzati",
+            "Backend Django e database PostgreSQL",
+            "Integrazione API con sistema HR/personale",
+            "Aggiornamento organico e gestione centralizzata dei dati",
+            "Tracciamento attestati completati, mancanti e in scadenza",
           ],
+          caseStudy: {
+            context:
+              "Il processo formativo richiedeva controllo continuo su persone, ruoli, corsi e date di scadenza.",
+            analysis:
+              "Il workflow Excel e stato scomposto in entita, regole di business e stati operativi.",
+            solution:
+              "Applicazione React/TypeScript con UI Shadcn/Tailwind, backend Django e PostgreSQL.",
+            automation:
+              "Le scadenze vengono calcolate dal sistema e l'organico viene aggiornato tramite integrazione API.",
+            result:
+              "La gestione passa da file statici a un sistema centralizzato, consultabile e piu manutenibile.",
+          },
         },
         "device-management": {
-          type: "Sistema gestionale interno",
-          goal: "Tracciare PC e assegnazioni ai dipendenti mantenendo lo storico",
+          type: "Asset Management System",
+          goal:
+            "Gestionale centralizzato per dispositivi, dipendenti, assegnazioni e storico.",
+          problem:
+            "Gestione dispositivi tramite Excel con perdita dello storico delle assegnazioni.",
+          solution:
+            "Sistema con asset, dipendenti, workflow di assegnazione, dashboard e tracciabilita.",
+          automation:
+            "Persistenza PostgreSQL e logica backend Django per conservare lo storico e guidare le assegnazioni.",
           features: [
-            "Anagrafica dispositivi e dipendenti",
+            "Gestione asset, dipendenti e assegnazioni",
+            "Storico completo delle assegnazioni",
+            "Dashboard e tracciabilita operativa",
             "Workflow di assegnazione con editor laterale",
-            "Storico completo delle vecchie assegnazioni",
-            "CRUD completo per dispositivi e persone",
+            "CRUD completo con backend Django e PostgreSQL",
           ],
+          caseStudy: {
+            context:
+              "Il tracking dei dispositivi richiedeva piu controllo su stato corrente e assegnazioni passate.",
+            analysis:
+              "Il processo e stato modellato separando anagrafiche, asset, assegnazioni e storico.",
+            solution:
+              "Gestionale React/TypeScript con Shadcn/UI, Tailwind CSS, Django e PostgreSQL.",
+            automation:
+              "La logica applicativa mantiene lo storico delle assegnazioni e rende piu affidabile il workflow.",
+            result:
+              "Il sistema rende piu chiara la tracciabilita degli asset rispetto alla gestione su fogli statici.",
+          },
         },
       },
     },
@@ -263,7 +353,7 @@ export const translations: Record<Language, Translations> = {
       title: "Restiamo in",
       highlightedTitle: "Contatto",
       availability:
-        "Disponibile per collaborazioni, freelance e nuove opportunita.",
+        "Hai un processo che potrebbe essere automatizzato?",
       successTitle: "Messaggio inviato!",
       successDescription: "Grazie per avermi scritto. Ti rispondero presto.",
       nameLabel: "Nome",
@@ -273,9 +363,9 @@ export const translations: Record<Language, Translations> = {
       messageLabel: "Messaggio",
       messagePlaceholder: "Raccontami del tuo progetto...",
       submit: "Invia messaggio",
-      sideTitle: "Pronto a costruire qualcosa di valido?",
+      sideTitle: "Parliamone",
       sideDescription:
-        "Se ti serve una web application completa, vuoi migliorare un progetto esistente o hai domande sul mio lavoro, scrivimi.",
+        "Possiamo analizzarlo e capire come trasformarlo in un'applicazione, un workflow o un sistema integrato.",
       socialTitle: "Dove trovarmi",
     },
     footer: {
@@ -284,15 +374,17 @@ export const translations: Record<Language, Translations> = {
   },
   en: {
     meta: {
-      title: "Full-Stack Developer Portfolio | Kevin",
+      title: "Full-Stack Engineer Portfolio | Kevin",
     },
     navbar: {
       links: [
-        { href: "#home", label: "Home" },
-        { href: "#about", label: "About" },
-        { href: "#stack", label: "Skills" },
-        { href: "#projects", label: "Projects" },
-        { href: "#contact", label: "Contact" },
+        { href: "#home", label: "Home", icon: House },
+        { href: "#about", label: "About", icon: UserSearch },
+        { href: "#capabilities", label: "Capabilities", icon: Workflow },
+        { href: "#stack", label: "Tech", icon: Layers },
+        { href: "#projects", label: "Projects", icon: FolderOpenDot },
+        { href: "#experience", label: "Experience", icon: BriefcaseBusiness },
+        { href: "#contact", label: "Contact", icon: Contact },
       ],
       cta: "Let's Work",
       languageLabel: "Language",
@@ -300,11 +392,11 @@ export const translations: Record<Language, Translations> = {
     hero: {
       availability: "Open to new opportunities",
       intro: "Hi, I'm",
-      title: "Full-Stack Developer",
-      tagline: "Building Modern Web Experiences",
+      title: "Full-Stack Engineer",
+      tagline: "Automation Systems Builder",
       description:
-        "From concept to deployment, I build scalable web apps, intuitive dashboards, automation workflows, and REST APIs that deliver real business value.",
-      primaryCta: "View Projects",
+        "I design software, workflows, and automations that turn complex business processes into efficient, scalable systems. From process analysis to deployment: frontend, backend, databases, APIs, integrations, and automation.",
+      primaryCta: "Explore Projects",
       secondaryCta: "Download CV",
       stackLabel: "Main Tech Stack:",
       scrollLabel: "Scroll",
@@ -314,32 +406,32 @@ export const translations: Record<Language, Translations> = {
       title: "Who",
       highlightedTitle: "I Am",
       description:
-        "Passionate developer crafting complete web solutions with attention to detail, performance, and technical solidity.",
+        "Full-Stack Engineer focused on business applications, internal systems, integrations, and automations.",
       paragraphs: [
-        "I'm a Full-Stack Developer passionate about building complete web solutions, from polished frontends to robust backend systems and well-structured databases.",
-        "My approach combines clean architecture, maintainable code, and a strong focus on performance and user experience. Every project is a chance to deliver real value through thoughtful engineering.",
-        "Whether it's a client-facing web app, an internal dashboard, or an automation workflow, I bring the same commitment to quality and attention to detail.",
+        "I'm a Full-Stack Engineer focused on designing business applications, internal systems, and automations.",
+        "My work often starts from an existing process: I study workflows, data, dependencies, and manual activities, identify the critical points, and turn the process into structured software.",
+        "I follow the full path end to end: frontend, backend, databases, APIs, integrations, automation, and deployment. The goal is not just to ship features, but to build reliable, maintainable systems that are useful to the business.",
       ],
       highlights: [
         {
-          title: "Modern UIs",
+          title: "Process Analysis",
           description:
-            "Crafting responsive, accessible interfaces with React and modern styling tools.",
+            "I analyze workflows, data, and manual activities to identify inefficiencies and automation opportunities.",
         },
         {
-          title: "Solid Backends",
+          title: "Full-Stack Systems",
           description:
-            "Building scalable APIs and business logic with Django and Node.js.",
+            "I design complete applications with frontend, backend, APIs, and databases.",
         },
         {
-          title: "Structured Data",
+          title: "Automation",
           description:
-            "Designing efficient database schemas with PostgreSQL and MongoDB.",
+            "I automate workflows and integrations through Python, JavaScript, and external services.",
         },
         {
-          title: "Performance First",
+          title: "System Integration",
           description:
-            "Optimizing for speed, maintainability, and exceptional user experience.",
+            "I connect applications, databases, APIs, and business services into reliable flows.",
         },
       ],
     },
@@ -348,8 +440,15 @@ export const translations: Record<Language, Translations> = {
       title: "Skills &",
       highlightedTitle: "Technologies",
       description:
-        "A comprehensive toolkit for building modern, full-stack web applications.",
-      categories: {},
+        "I use technologies as tools to design systems that solve real business processes.",
+      categories: {
+        Frontend: "Frontend",
+        Backend: "Backend",
+        Data: "Data",
+        "Automation & Integration": "Automation & Integration",
+        "DevOps / Deployment": "DevOps / Deployment",
+        "Enterprise / IT": "Enterprise / IT",
+      },
       skills: {},
     },
     projects: {
@@ -357,11 +456,11 @@ export const translations: Record<Language, Translations> = {
       title: "Featured",
       highlightedTitle: "Projects",
       description:
-        "Real-world applications showcasing my expertise in full-stack development.",
+        "Real-world applications presented through process, solution, automation, and integrations.",
       clientProjectsTitle: "Client Projects",
-      clientProjectsDescription: "Production-ready applications",
+      clientProjectsDescription: "Software and websites built around real workflows",
       internalProjectsTitle: "Internal Enterprise Tools",
-      internalProjectsDescription: "Production-ready applications",
+      internalProjectsDescription: "Systems that digitize business workflows",
       soon: "Soon",
       moreFeatures: "more features",
       liveSite: "Live Site",
@@ -372,49 +471,127 @@ export const translations: Record<Language, Translations> = {
       close: "Close",
       items: {
         indelebiletatto: {
-          type: "Web app for a tattoo shop client",
-          hint: "Mobile focused design",
-          goal: "Showcase work and manage bookings",
+          type: "Booking & Automation Platform",
+          hint: "Booking and integrations",
+          goal:
+            "Complete web application for services, portfolio, and studio booking management.",
+          problem:
+            "The studio needed to present services and work while collecting bookings without fragmented manual handling.",
+          solution:
+            "Responsive application with Node.js backend, MongoDB persistence, and availability management.",
+          automation:
+            "Google Calendar API sync, Python automations, and personalized WhatsApp confirmations.",
           features: [
-            "Visual gallery of tattoo works",
-            "Booking system with available time slots",
-            "Slots synced with Google Calendar",
-            "Bookings stored in DB for reporting",
-            "Python script sends WhatsApp messages",
+            "Booking management through a Node.js backend",
+            "Updated availability and MongoDB persistence",
+            "Google Calendar API integration",
+            "Automatic booking synchronization",
+            "Python automations and personalized WhatsApp confirmations",
+            "Responsive frontend for services and portfolio",
           ],
+          caseStudy: {
+            context:
+              "The project combines online presence, portfolio, and booking management.",
+            analysis:
+              "The booking flow was modeled around availability, customer data, and calendar operations.",
+            solution:
+              "React frontend with Chakra UI, Node.js backend, MongoDB database, and Vercel/Render deployment.",
+            automation:
+              "Bookings are synchronized with Google Calendar and supported by Python scripts for WhatsApp messages.",
+            result:
+              "The studio has a single digital channel to present itself and manage requests in a more structured way.",
+          },
         },
         edilprojectmilano: {
-          type: "Website for a construction business",
-          goal: "Increase web visibility and present work and services",
+          type: "Corporate Website & Local SEO",
+          goal:
+            "Responsive website focused on service presentation, credibility, and conversion.",
+          problem:
+            "The business lacked a professional web presence and needed stronger local visibility.",
+          solution:
+            "React/TypeScript website with clear structure for services, projects, contacts, and on-page SEO.",
+          automation:
+            "Contact flow and local presence setup through Google Business Profile.",
           features: [
-            "Portfolio of completed work",
-            "Company story and services section",
-            "Contact form with email notification",
-            "Google Business Profile setup",
+            "React / TypeScript development",
+            "Responsive UI oriented to conversion",
+            "On-page SEO and local visibility structure",
+            "Completed work portfolio and services presentation",
+            "Web infrastructure deployment",
           ],
+          caseStudy: {
+            context:
+              "The client needed a more professional and credible digital presence.",
+            analysis:
+              "The information architecture was organized around services, completed work, and contact paths.",
+            solution:
+              "Responsive website developed with React, TypeScript, and Tailwind CSS.",
+            automation:
+              "Contact and local presence flows were prepared to make requests and discovery easier.",
+            result:
+              "The project provides a stronger web base for company presentation and local visibility.",
+          },
         },
         "safety-scheduler": {
-          type: "Internal dashboard web app",
-          goal: "Manage training requirements and certificate expirations by role",
+          type: "Internal Business Application",
+          goal:
+            "Centralized application that manages workforce, courses, and expirations while automatically calculating relevant dates.",
+          problem:
+            "Training expiration management was handled through static Excel files and manual updates.",
+          solution:
+            "Centralized system with dashboard, filters, Django backend, PostgreSQL, and structured data management.",
+          automation:
+            "Automatic expiration calculation and workforce updates through HR/personnel system API integration.",
           features: [
-            "Company and people registry stored in DB",
-            "Role-based training requirements",
-            "Certificate tracking: completed vs missing",
-            "Expiration management per certificate",
-            "Dashboard showing compliance status",
-            "Global filters and Excel export",
-            "Authentication at entry",
+            "Automatic training expiration calculation",
+            "Business dashboard with advanced filters",
+            "Django backend and PostgreSQL database",
+            "API integration with HR/personnel system",
+            "Workforce updates and centralized data management",
+            "Tracking for completed, missing, and expiring certificates",
           ],
+          caseStudy: {
+            context:
+              "The training process required ongoing control over people, roles, courses, and expiration dates.",
+            analysis:
+              "The Excel workflow was decomposed into entities, business rules, and operational states.",
+            solution:
+              "React/TypeScript application with Shadcn/Tailwind UI, Django backend, and PostgreSQL.",
+            automation:
+              "Expiration dates are calculated by the system and workforce data is updated through an API integration.",
+            result:
+              "Management moved from static files to a centralized, queryable, and more maintainable system.",
+          },
         },
         "device-management": {
-          type: "Internal management system",
-          goal: "Track PCs and employee assignments with full history",
+          type: "Asset Management System",
+          goal:
+            "Centralized management system for devices, employees, assignments, and history.",
+          problem:
+            "Device management relied on Excel files, with assignment history easily lost.",
+          solution:
+            "System covering assets, employees, assignment workflow, dashboard, and traceability.",
+          automation:
+            "PostgreSQL persistence and Django backend logic preserve history and guide assignments.",
           features: [
-            "Registry of devices and employees",
+            "Asset, employee, and assignment management",
+            "Complete assignment history",
+            "Dashboard and operational traceability",
             "Assignment workflow with sidebar editor",
-            "Full history of previous assignments",
-            "Full CRUD for devices and people",
+            "Full CRUD with Django backend and PostgreSQL",
           ],
+          caseStudy: {
+            context:
+              "Device tracking required clearer control over current state and previous assignments.",
+            analysis:
+              "The process was modeled by separating registries, assets, assignments, and history.",
+            solution:
+              "React/TypeScript management system with Shadcn/UI, Tailwind CSS, Django, and PostgreSQL.",
+            automation:
+              "Application logic preserves assignment history and makes the workflow more reliable.",
+            result:
+              "The system makes asset traceability clearer than a static spreadsheet process.",
+          },
         },
       },
     },
@@ -422,7 +599,7 @@ export const translations: Record<Language, Translations> = {
       badge: "Contact",
       title: "Let's",
       highlightedTitle: "Connect",
-      availability: "Open to new opportunities.",
+      availability: "Do you have a process that could be automated?",
       successTitle: "Message Sent!",
       successDescription: "Thanks for reaching out. I'll get back to you soon.",
       nameLabel: "Name",
@@ -432,9 +609,9 @@ export const translations: Record<Language, Translations> = {
       messageLabel: "Message",
       messagePlaceholder: "Tell me about your project...",
       submit: "Send Message",
-      sideTitle: "Ready to build something great?",
+      sideTitle: "Let's talk",
       sideDescription:
-        "Whether you need a complete web application, want to improve an existing project, or just have questions about my work, I'd love to hear from you.",
+        "We can analyze it and understand how to turn it into an application, a workflow, or an integrated system.",
       socialTitle: "Connect With Me",
     },
     footer: {

@@ -58,8 +58,8 @@ export const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
-            {content.badge}
+          <span className="mb-4 block font-mono text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+            07 / CONTACT
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             {content.title}{" "}
@@ -186,19 +186,17 @@ export const Contact = () => {
                 <h4 className="text-sm font-semibold text-primary uppercase tracking-wider">
                   {content.socialTitle}
                 </h4>
-                <div className="flex flex-col gap-3">
+                <div className="divide-y divide-border/60 border-y border-border/60">
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 glass rounded-xl hover:bg-glass/90 hover:border-primary/30 transition-all group"
+                      className="group flex items-center justify-between gap-4 py-4 text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <link.icon className="w-5 h-5 text-primary" />
-                      </div>
                       <span className="font-medium">{link.label}</span>
+                      <link.icon className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
                     </a>
                   ))}
                 </div>

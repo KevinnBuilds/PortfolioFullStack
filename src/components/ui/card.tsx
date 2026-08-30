@@ -1,15 +1,22 @@
-import React from "react";
-
-import { motion } from "framer-motion";
-
-import { Button } from "@/components/ui/button";
-import { translations } from "@/data/translations";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { profile } from "@/data/profile";
-import { ArrowDown, Download, Sparkles, Code2, SearchCode } from "lucide-react";
 
 const Card = () => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const { language } = useLanguage();
+
+  const copy = {
+    label: "SELECTED WORK / 01",
+    title: language === "it" ? "Esplora il mio lavoro" : "Explore My Work",
+    description:
+      language === "it"
+        ? "Sistemi, automazioni e software costruiti attorno a processi reali."
+        : "Systems, automations, and software built around real processes.",
+    projects: language === "it" ? "Vedi i progetti" : "View Projects",
+    cv: language === "it" ? "Scarica il CV" : "Download CV",
+  };
 
   const scrollToProjects = () => {
     const element = document.querySelector("#projects");
@@ -17,68 +24,84 @@ const Card = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const { language } = useLanguage();
-  const content = translations[language].hero;
 
   return (
-    <div
-      className="relative h-[260px] w-[340px] [perspective:1200px]"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <motion.aside
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.55,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="group relative w-[min(440px,calc(100vw-2rem))]"
+      aria-label={copy.title}
     >
-      <motion.div
-        className="relative h-full w-full [transform-style:preserve-3d]"
-        animate={{ rotateY: isHovered ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-      >
-        <div className=" relative inset-0 rounded-3xl  flex items-center justify-center border border-white/10  p-6 text-primary bg-trasparent [backface-visibility:hidden]">
-          <motion.span className="max-w-[22ch] flex items-center justify-center text-center text-2xl font-bold tracking-tight">
-            <SearchCode className="w-6 h-6 mr-2 text-primary" />
-            Cliccami e Scopri di più!
-          </motion.span>
-        </div>
-        <div className="absolute inset-0 rounded-3xl flex flex-col gap-5 justify-center items-center border border-white/10  bg-trasparent p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex flex-col items-center "
-          >
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <Code2 className="w-8 h-8 text-primary" />
-              <p className="text-sm font-semibold leading-relaxed max-w-[22ch]">
-                Visualizza i miei progetti o scarica il mio CV!
-              </p>
-            </div>
+      <div
+        aria-hidden="true"
+        className="absolute -right-5 top-8 hidden h-24 w-24 rounded-full bg-primary/8 blur-2xl transition-opacity duration-300 group-hover:opacity-80 sm:block"
+      />
 
-            <Button
-              variant="hero"
-              size="lg"
-              onClick={scrollToProjects}
-              className="group relative overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                {content.primaryCta}
-                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.6 }}
-              />
-            </Button>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.25 }}>
-            <Button variant="heroOutline" size="lg" asChild className="group">
-              <a href={profile.cvUrl} download>
-                <Download className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-                {content.secondaryCta}
+      <motion.div
+        whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+        transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+        className="relative overflow-hidden rounded-2xl border border-border/55 bg-secondary/35 p-5 shadow-card backdrop-blur-xl transition-colors duration-300 group-hover:border-primary/25 group-hover:bg-secondary/45 sm:p-6"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-primary/45 via-primary/15 to-transparent"
+        />
+
+        <div className="grid gap-5 sm:grid-cols-[minmax(0,1fr)_112px] sm:items-center">
+          <div className="relative z-10">
+            <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80">
+              {copy.label}
+            </p>
+
+            <h2 className="max-w-[13ch] text-2xl font-bold leading-tight text-foreground sm:text-3xl">
+              {copy.title}
+            </h2>
+
+            <p className="mt-3 max-w-[32ch] text-sm leading-relaxed text-muted-foreground">
+              {copy.description}
+            </p>
+
+            <div className="mt-5 flex flex-col gap-3 min-[420px]:flex-row">
+              <button
+                type="button"
+                onClick={scrollToProjects}
+                className="group/action inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-primary/35 bg-gradient-to-r from-primary via-cyan-400 to-accent px-4 text-sm font-semibold text-primary-foreground outline-none transition-all duration-200 hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primary/55"
+              >
+                <span>{copy.projects}</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/action:translate-x-0.5 group-focus-visible/action:translate-x-0.5" />
+              </button>
+
+              <a
+                href={profile.cvUrl}
+                download
+                className="group/action inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border/70 bg-background/25 px-4 text-sm font-semibold text-foreground outline-none transition-all duration-200 hover:border-primary/35 hover:bg-primary/8 focus-visible:ring-2 focus-visible:ring-primary/55"
+              >
+                <Download className="h-4 w-4 text-primary transition-transform duration-200 group-hover/action:translate-y-0.5 group-focus-visible/action:translate-y-0.5" />
+                <span>{copy.cv}</span>
               </a>
-            </Button>
-          </motion.div>
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none hidden border-l border-border/50 pl-5 sm:block"
+          >
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary/70">
+              SYSTEMS
+            </p>
+            <div className="mt-4 space-y-2">
+              <span className="block h-px w-20 bg-primary/35" />
+              <span className="block h-px w-12 bg-accent/25" />
+              <span className="block h-px w-16 bg-border" />
+            </div>
+          </div>
         </div>
       </motion.div>
-    </div>
+    </motion.aside>
   );
 };
 

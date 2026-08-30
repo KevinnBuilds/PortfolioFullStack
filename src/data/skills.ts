@@ -6,63 +6,67 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Core Expertise",
-    icon: "Layers",
-    skills: [
-      "Full-Stack Development",
-      "REST APIs",
-      "Version Control (Git)",
-      "CI/CD & Deployment",
-      "Responsive Design",
-    ],
-  },
-  {
-    title: "Languages",
-    icon: "Code2",
-    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "SQL"],
-  },
-  {
     title: "Frontend",
     icon: "Monitor",
-    skills: ["React", "Vite", "Next.js"],
+    skills: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Chakra UI",
+      "Shadcn/UI",
+    ],
   },
   {
     title: "Backend",
     icon: "Server",
-    skills: ["Django", "Node.js"],
+    skills: ["Python", "Django", "Node.js", "REST API"],
   },
   {
-    title: "Database",
+    title: "Data",
     icon: "Database",
-    skills: ["PostgreSQL", "MongoDB"],
+    skills: ["PostgreSQL", "MongoDB", "Data Modeling", "CRUD / Business Logic"],
   },
   {
-    title: "UI Libraries & Styling",
-    icon: "Palette",
-    skills: ["Tailwind CSS", "Shadcn/UI", "Chakra UI", "MUI"],
-  },
-  {
-    title: "Deployment",
-    icon: "Rocket",
-    skills: ["Vercel", "Render", "Git Workflows"],
-  },
-  {
-    title: "Knowledge",
-    icon: "NotebookPen",
+    title: "Automation & Integration",
+    icon: "Zap",
     skills: [
-      "Critical Thinking",
-      "Business Mindset",
-      "Agile Methodologies",
-      "Problem Solving",
+      "Python",
+      "JavaScript",
+      "REST API",
+      "Google APIs",
+      "System Integration",
+      "Workflow Automation",
+    ],
+  },
+  {
+    title: "DevOps / Deployment",
+    icon: "Rocket",
+    skills: ["Docker", "Nginx", "Ubuntu VPS", "Git", "Vercel", "Render"],
+  },
+  {
+    title: "Enterprise / IT",
+    icon: "Layers",
+    skills: [
+      "Microsoft 365",
+      "Entra ID",
+      "Intune",
+      "IAM",
+      "MFA",
+      "Conditional Access",
+      "SharePoint",
     ],
   },
 ];
 
 export const quickStackBadges = [
+  "Python",
+  "Django",
+  "Node.js",
   "React",
   "TypeScript",
-  "Django",
   "PostgreSQL",
-  "Tailwind CSS",
-  "Git",
+  "Docker",
 ];

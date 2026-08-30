@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, CircleArrowDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 import { useLanguage } from "@/context/LanguageContext";
@@ -10,6 +10,7 @@ export const Navbar = () => {
   const { language, setLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("#home");
   const content = translations[language].navbar;
 
   useEffect(() => {
@@ -19,6 +20,29 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const sectionIds = content.links.map((link) => link.href.replace("#", ""));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          setActiveHref(`#${visible.target.id}`);
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: [0.1, 0.25, 0.5] },
+    );
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [content.links]);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -88,6 +112,7 @@ export const Navbar = () => {
               scrollToSection("#home");
             }}
             className="text-lg font-bold gradient-text relative z-10"
+            aria-label="Home"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -96,42 +121,52 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex flex-col items-center gap-1 relative z-10">
-            {content.links.map((link) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
-                className="px-4 py-2 text-md text-muted-foreground hover:text-foreground transition-all duration-200 rounded-lg hover:bg-gradient-to-r hover:from-primary/10 hover:via-accent/10 hover:to-primary/10 relative group"
-                whileHover={{ y: -1 }}
-                whileTap={{ y: 0 }}
-              >
-                {link.icon && (
-                  <link.icon className="w-4 h-6 inline-block mr-1 text-primary" />
-                )}
-                {/* Underline effect on hover */}
-                <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary via-accent to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
-              </motion.a>
-            ))}
+            {content.links.map((link) => {
+              const isActive = activeHref === link.href;
+
+              return (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                  }}
+                  aria-label={link.label}
+                  title={link.label}
+                  className={`px-4 py-2 text-md text-muted-foreground hover:text-foreground transition-all duration-200 rounded-lg hover:bg-gradient-to-r hover:from-primary/10 hover:via-accent/10 hover:to-primary/10 relative group ${
+                    isActive ? "text-primary bg-primary/10" : ""
+                  }`}
+                  whileHover={{ y: -1 }}
+                  whileTap={{ y: 0 }}
+                >
+                  {link.icon && (
+                    <link.icon className="w-4 h-6 inline-block mr-1 text-primary" />
+                  )}
+                  <span className="pointer-events-none absolute left-full ml-3 top-1/2 -translate-y-1/2 rounded-lg border border-border/60 bg-secondary px-3 py-1.5 text-xs font-medium text-foreground opacity-0 shadow-card transition-opacity group-hover:opacity-100">
+                    {link.label}
+                  </span>
+                  <span
+                    className={`absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary via-accent to-primary transition-transform duration-300 origin-left rounded-full ${
+                      isActive
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </motion.a>
+              );
+            })}
           </div>
 
           <div className="hidden md:flex flex-col items-center gap-5  relative z-10">
             {renderLanguageToggle()}
-            <Button
-              variant="hero"
-              size="icon"
-              onClick={() => scrollToSection("#contact")}
-            >
-              <CircleArrowDown className="w-5 h-4  animate-bounce" />
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <motion.button
             className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-primary/10 hover:text-primary md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Chiudi menu" : "Apri menu"}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

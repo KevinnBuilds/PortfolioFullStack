@@ -4,12 +4,8 @@ import {
   ExternalLink,
   ChevronLeft,
   ChevronRight,
-  Briefcase,
-  Wrench,
   X,
-  Sparkles,
   ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,6 +43,10 @@ const ProjectCard = ({
   const isFeatured = project.category === "featured";
   const content = translations[language].projects;
   const localizedProject = getLocalizedProject(project, language);
+  const labels =
+    language === "it"
+      ? { problem: "Problema", solution: "Soluzione", automation: "Automazioni" }
+      : { problem: "Problem", solution: "Solution", automation: "Automation" };
 
   return (
     <motion.div
@@ -67,31 +67,25 @@ const ProjectCard = ({
         {/* Header Section */}
         <div className="flex items-start justify-between mb-4 sm:mb-5">
           <div className="flex flex-col gap-2 sm:gap-3">
-            {/* Project Type Badge */}
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              className={`inline-flex items-center gap-2 text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full w-fit ${
-                isFeatured
-                  ? "bg-primary/15 text-primary border border-primary/30"
-                  : "bg-accent/15 text-accent border border-accent/30"
+            <span
+              className={`font-mono text-xs font-semibold uppercase tracking-[0.22em] ${
+                isFeatured ? "text-primary" : "text-accent"
               }`}
             >
+              {isFeatured ? "CLIENT PROJECT" : "INTERNAL SYSTEM"} /{" "}
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="text-xs font-semibold text-muted-foreground">
               {localizedProject.type}
-            </motion.span>
+            </span>
 
-            {/* Hint Badge */}
             {localizedProject.hint && (
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 + 0.2 }}
-                className={`inline-flex items-center gap-2 text-xs font-medium px-3 sm:px-4 py-1 sm:py-1.5 rounded-full w-fit ${
-                  isFeatured
-                    ? "bg-primary/10 text-primary/90 border border-primary/20"
-                    : "bg-accent/10 text-accent/90 border border-accent/20"
-                }`}
+                className="text-xs font-medium text-muted-foreground/80"
               >
-                <Sparkles className="w-3 h-3" />
                 {localizedProject.hint}
               </motion.div>
             )}
@@ -114,33 +108,28 @@ const ProjectCard = ({
           {localizedProject.goal}
         </p>
 
-        {/* Features Preview */}
-        <div className="flex-1 mb-4 sm:mb-6">
-          <ul className="space-y-2 sm:space-y-2.5">
-            {localizedProject.features.slice(0, 3).map((feature, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 + 0.1 + i * 0.05 }}
-                className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2 sm:gap-3"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="leading-relaxed">{feature}</span>
-              </motion.li>
-            ))}
-            {localizedProject.features.length > 3 && (
-              <motion.li
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
-                className="text-xs sm:text-sm text-primary font-medium flex items-center gap-2 mt-2 sm:mt-3"
-              >
-                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />+
-                {localizedProject.features.length - 3} {content.moreFeatures}
-              </motion.li>
-            )}
-          </ul>
+        {/* Process Preview */}
+        <div className="flex-1 mb-4 sm:mb-6 space-y-3">
+          {[
+            [labels.problem, localizedProject.problem],
+            [labels.solution, localizedProject.solution],
+            [labels.automation, localizedProject.automation],
+          ].map(([label, value], i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 + 0.1 + i * 0.05 }}
+              className="border-t border-border/50 pt-3"
+            >
+              <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-primary">
+                {label}
+              </p>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                {value}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
         {/* Stack Badges */}
@@ -215,6 +204,24 @@ const ProjectModal = ({
 
   const content = translations[language].projects;
   const localizedProject = getLocalizedProject(project, language);
+  const labels =
+    language === "it"
+      ? {
+          context: "Context",
+          analysis: "Analysis",
+          solution: "Solution",
+          automation: "Automation",
+          tech: "Tech",
+          result: "Result",
+        }
+      : {
+          context: "Context",
+          analysis: "Analysis",
+          solution: "Solution",
+          automation: "Automation",
+          tech: "Tech",
+          result: "Result",
+        };
 
   return (
     <AnimatePresence>
@@ -283,11 +290,48 @@ const ProjectModal = ({
               {localizedProject.goal}
             </motion.p>
 
-            {/* All Features */}
+            {/* Case Study */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
+              className="mb-8"
+            >
+              <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
+                <div className="w-1 h-4 bg-primary rounded-full" />
+                Case Study
+              </h3>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  [labels.context, localizedProject.caseStudy.context],
+                  [labels.analysis, localizedProject.caseStudy.analysis],
+                  [labels.solution, localizedProject.caseStudy.solution],
+                  [labels.automation, localizedProject.caseStudy.automation],
+                  [labels.result, localizedProject.caseStudy.result],
+                ].map(([label, value], i) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 + i * 0.04 }}
+                    className="border-t border-border/50 pt-4"
+                  >
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+                      {label}
+                    </p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {value}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* All Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
               className="mb-8"
             >
               <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 flex items-center gap-2">
@@ -300,10 +344,10 @@ const ProjectModal = ({
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.25 + i * 0.05 }}
+                    transition={{ delay: 0.35 + i * 0.05 }}
                     className="text-muted-foreground flex items-start gap-3"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                     <span className="leading-relaxed">{feature}</span>
                   </motion.li>
                 ))}
@@ -487,10 +531,9 @@ export const Projects = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 text-primary text-sm font-semibold tracking-wider uppercase mb-6 px-4 py-2 rounded-full glass"
+              className="mb-6 block font-mono text-xs font-semibold uppercase tracking-[0.28em] text-primary"
             >
-              <Briefcase className="w-4 h-4" />
-              {content.badge}
+              05 / WORK
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -520,21 +563,16 @@ export const Projects = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="section-container mb-6 sm:mb-10"
           >
-            <div className="flex items-center gap-3 sm:gap-4">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-primary/15 border border-primary/30 flex items-center justify-center"
-              >
-                <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-              </motion.div>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold">
-                  {content.clientProjectsTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  {content.clientProjectsDescription}
-                </p>
-              </div>
+            <div className="border-l border-primary/40 pl-5">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                CLIENT PROJECTS
+              </p>
+              <h3 className="mt-2 text-xl font-bold sm:text-2xl">
+                {content.clientProjectsTitle}
+              </h3>
+              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                {content.clientProjectsDescription}
+              </p>
             </div>
           </motion.div>
 
@@ -555,21 +593,16 @@ export const Projects = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="section-container mb-6 sm:mb-10"
           >
-            <div className="flex items-center gap-3 sm:gap-4">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-accent/15 border border-accent/30 flex items-center justify-center"
-              >
-                <Wrench className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
-              </motion.div>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold">
-                  {content.internalProjectsTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  {content.internalProjectsDescription}
-                </p>
-              </div>
+            <div className="border-l border-accent/40 pl-5">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                INTERNAL SYSTEMS
+              </p>
+              <h3 className="mt-2 text-xl font-bold sm:text-2xl">
+                {content.internalProjectsTitle}
+              </h3>
+              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                {content.internalProjectsDescription}
+              </p>
             </div>
           </motion.div>
 
