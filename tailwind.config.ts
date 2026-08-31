@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -64,6 +65,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       borderRadius: {
@@ -86,8 +88,8 @@ export default {
         'glow': 'var(--shadow-glow)',
         'card': 'var(--shadow-card)',
         'elevated': 'var(--shadow-elevated)',
-        'glow-sm': '0 0 30px hsl(175 80% 50% / 0.15)',
-        'glow-lg': '0 0 100px hsl(175 80% 50% / 0.25)',
+        'glow-sm': '0 12px 32px hsl(255 34% 62% / 0.14)',
+        'glow-lg': '0 20px 65px hsl(255 34% 62% / 0.18)',
       },
       keyframes: {
         "accordion-down": {
@@ -156,5 +158,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

@@ -10,8 +10,11 @@ export const About = () => {
   const content = translations[language].about;
 
   return (
-    <section id="about" className="relative overflow-hidden py-28 sm:py-36">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/10 to-transparent" />
+    <section
+      id="about"
+      className="section-cream relative overflow-hidden py-28 sm:py-36"
+    >
+      <div className="absolute inset-0 section-cream-grid opacity-60" />
       <div className="absolute left-1/4 top-1/4 h-[700px] w-[700px] rounded-full bg-primary/5 blur-3xl animate-float" />
       <div className="absolute bottom-1/4 right-1/4 h-[600px] w-[600px] rounded-full bg-accent/5 blur-3xl animate-float animation-delay-300" />
       <div
@@ -29,7 +32,7 @@ export const About = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="mb-16 border-t border-border/60 pt-6"
+            className="mb-16 border-t border-black/10 pt-6"
           >
             <span className="mb-6 block font-mono text-xs font-semibold uppercase tracking-[0.28em] text-primary">
               01 / ABOUT
@@ -38,7 +41,7 @@ export const About = () => {
               {content.title}{" "}
               <span className="gradient-text">{content.highlightedTitle}</span>
             </h2>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            <p className="max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl">
               {content.description}
             </p>
           </motion.div>
@@ -48,20 +51,20 @@ export const About = () => {
               initial={{ opacity: 0, x: -24 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative space-y-6 border-l border-primary/30 pl-6 sm:pl-8"
+              className="relative space-y-6 border-l border-primary/45 pl-6 sm:pl-8"
             >
-              <div className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-primary shadow-glow-sm" />
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <div className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-primary" />
+              <p className="text-lg leading-relaxed text-ink-muted">
                 {content.paragraphs[0].split("Full-Stack Engineer")[0]}
-                <span className="font-semibold text-foreground">
+                <span className="font-semibold text-[var(--ink)]">
                   Full-Stack Engineer
                 </span>
                 {content.paragraphs[0].split("Full-Stack Engineer")[1]}
               </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="text-lg leading-relaxed text-ink-muted">
                 {content.paragraphs[1]}
               </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="text-lg leading-relaxed text-ink-muted">
                 {content.paragraphs[2]}
               </p>
             </motion.div>
@@ -70,7 +73,7 @@ export const About = () => {
               initial={{ opacity: 0, x: 24 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="divide-y divide-border/60 border-y border-border/60"
+              className="divide-y divide-black/10 border-y border-black/10"
             >
               {content.highlights.map((highlight, index) => (
                 <motion.article
@@ -87,7 +90,7 @@ export const About = () => {
                     <h3 className="mb-2 text-lg font-bold">
                       {highlight.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-sm leading-relaxed text-ink-muted">
                       {highlight.description}
                     </p>
                   </div>

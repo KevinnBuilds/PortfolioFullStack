@@ -60,10 +60,10 @@ const ProjectCard = ({
       }}
       className="relative group w-[calc(100vw-3rem)] sm:w-[420px] flex-shrink-0 snap-center"
     >
-      {/* Glow effect on hover */}
-      <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+      {/* Soft border lift on hover */}
+      <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-primary/18 via-accent/10 to-primary/18 opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100" />
 
-      <div className="relative glass rounded-3xl p-5 sm:p-7 md:p-9 card-interactive h-full flex flex-col">
+      <div className="relative flex h-full flex-col rounded-2xl border border-glass-border/55 bg-[var(--ink-soft)] p-5 text-foreground shadow-card backdrop-blur-xl card-interactive sm:p-7 md:p-8">
         {/* Header Section */}
         <div className="flex items-start justify-between mb-4 sm:mb-5">
           <div className="flex flex-col gap-2 sm:gap-3">
@@ -503,9 +503,12 @@ export const Projects = () => {
   const content = translations[language].projects;
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32 overflow-hidden">
+    <section
+      id="projects"
+      className="section-cream relative overflow-hidden py-24 sm:py-32"
+    >
       {/* Enhanced Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/10 to-transparent" />
+      <div className="absolute inset-0 section-cream-grid opacity-45" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-t from-primary/8 via-accent/5 to-transparent rounded-full blur-3xl" />
       <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl animate-float" />
 
@@ -548,7 +551,7 @@ export const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+              className="mx-auto max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl"
             >
               {content.description}
             </motion.p>
@@ -563,14 +566,14 @@ export const Projects = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="section-container mb-6 sm:mb-10"
           >
-            <div className="border-l border-primary/40 pl-5">
+            <div className="border-l border-primary/45 pl-5">
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
                 CLIENT PROJECTS
               </p>
               <h3 className="mt-2 text-xl font-bold sm:text-2xl">
                 {content.clientProjectsTitle}
               </h3>
-              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+              <p className="mt-1 text-xs text-ink-muted sm:text-sm">
                 {content.clientProjectsDescription}
               </p>
             </div>
@@ -593,14 +596,14 @@ export const Projects = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="section-container mb-6 sm:mb-10"
           >
-            <div className="border-l border-accent/40 pl-5">
+            <div className="border-l border-accent/45 pl-5">
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-accent">
                 INTERNAL SYSTEMS
               </p>
               <h3 className="mt-2 text-xl font-bold sm:text-2xl">
                 {content.internalProjectsTitle}
               </h3>
-              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+              <p className="mt-1 text-xs text-ink-muted sm:text-sm">
                 {content.internalProjectsDescription}
               </p>
             </div>

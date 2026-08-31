@@ -33,18 +33,18 @@ const Card = () => {
         duration: shouldReduceMotion ? 0 : 0.55,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative w-[min(440px,calc(100vw-2rem))]"
+      className="group relative w-[min(420px,calc(100vw-2rem))]"
       aria-label={copy.title}
     >
       <div
         aria-hidden="true"
-        className="absolute -right-5 top-8 hidden h-24 w-24 rounded-full bg-primary/8 blur-2xl transition-opacity duration-300 group-hover:opacity-80 sm:block"
+        className="absolute -right-4 top-8 hidden h-20 w-20 rounded-full bg-primary/7 blur-2xl transition-opacity duration-300 group-hover:opacity-70 sm:block"
       />
 
       <motion.div
         whileHover={shouldReduceMotion ? undefined : { y: -2 }}
         transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-        className="relative overflow-hidden rounded-2xl border border-border/55 bg-secondary/35 p-5 shadow-card backdrop-blur-xl transition-colors duration-300 group-hover:border-primary/25 group-hover:bg-secondary/45 sm:p-6"
+        className="relative overflow-hidden rounded-2xl border border-border/50 bg-secondary/32 p-5 shadow-card backdrop-blur-xl transition-colors duration-300 group-hover:border-primary/25 group-hover:bg-secondary/42 sm:p-6"
       >
         <div
           aria-hidden="true"
@@ -57,7 +57,7 @@ const Card = () => {
               {copy.label}
             </p>
 
-            <h2 className="max-w-[13ch] text-2xl font-bold leading-tight text-foreground sm:text-3xl">
+            <h2 className="max-w-[13ch] font-sans text-2xl font-bold leading-tight text-foreground sm:text-3xl">
               {copy.title}
             </h2>
 
@@ -65,11 +65,11 @@ const Card = () => {
               {copy.description}
             </p>
 
-            <div className="mt-5 flex flex-col gap-3 min-[420px]:flex-row">
+            <div className="mt-5 flex flex-col gap-3">
               <button
                 type="button"
                 onClick={scrollToProjects}
-                className="group/action inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-primary/35 bg-gradient-to-r from-primary via-cyan-400 to-accent px-4 text-sm font-semibold text-primary-foreground outline-none transition-all duration-200 hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primary/55"
+                className="group/action inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-accent/35 bg-gradient-to-r from-accent via-cyan-400 to-primary px-5 text-sm font-semibold text-primary-foreground outline-none transition-all duration-200 hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primary/55"
               >
                 <span>{copy.projects}</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/action:translate-x-0.5 group-focus-visible/action:translate-x-0.5" />
@@ -78,9 +78,9 @@ const Card = () => {
               <a
                 href={profile.cvUrl}
                 download
-                className="group/action inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border/70 bg-background/25 px-4 text-sm font-semibold text-foreground outline-none transition-all duration-200 hover:border-primary/35 hover:bg-primary/8 focus-visible:ring-2 focus-visible:ring-primary/55"
+                className="group/action inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-border/60 bg-background/22 px-5 text-sm font-semibold text-foreground outline-none transition-all duration-200 hover:border-primary/35 hover:bg-primary/8 focus-visible:ring-2 focus-visible:ring-primary/55"
               >
-                <Download className="h-4 w-4 text-primary transition-transform duration-200 group-hover/action:translate-y-0.5 group-focus-visible/action:translate-y-0.5" />
+                <Download className="h-4 w-4 text-accent transition-transform duration-200 group-hover/action:translate-y-0.5 group-focus-visible/action:translate-y-0.5" />
                 <span>{copy.cv}</span>
               </a>
             </div>
@@ -95,7 +95,7 @@ const Card = () => {
             </p>
             <div className="mt-4 space-y-2">
               <span className="block h-px w-20 bg-primary/35" />
-              <span className="block h-px w-12 bg-accent/25" />
+              <span className="block h-px w-12 bg-accent/35" />
               <span className="block h-px w-16 bg-border" />
             </div>
           </div>
