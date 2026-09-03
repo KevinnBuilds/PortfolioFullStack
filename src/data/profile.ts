@@ -8,7 +8,7 @@ export const profile = {
     "From process analysis to deployment: frontend, backend, databases, APIs, integrations, and automation.",
   email: "kevins.dvp@gmail.com",
   linkedin: "https://www.linkedin.com/in/kevin-marku-832831304/",
-  github: "https://github.com/KevinMakeMoney",
+  github: "https://github.com/KevinnBuilds",
   cvUrl: "/cv.pdf",
   availability: "Open to new opportunities",
 };
